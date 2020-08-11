@@ -6,10 +6,12 @@ require('dotenv').config();
 
 app.use(express.json());
 
+
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {  
+    const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
  
     let body = req.body;
   
@@ -65,3 +67,18 @@ app.get('/webhook', (req, res) => {
       }
     }
   });
+
+// Handles messages events
+function handleMessage(sender_psid, received_message) {
+
+}
+
+// Handles messaging_postbacks events
+function handlePostback(sender_psid, received_postback) {
+
+}
+
+// Sends response messages via the Send API
+function callSendAPI(sender_psid, response) {
+  
+}
